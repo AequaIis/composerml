@@ -1,6 +1,11 @@
 from .mlpnetwork import MLPNetwork
 import numpy as np
 from mido import MidiFile, MidiTrack, Message
+
+class SeedError(Exception):
+    """Custom exception to indicate that the seed length is insufficient."""
+    pass
+
 class MLPMusicGen(MLPNetwork):
     def __init__(self, context_length =10, hidden_sizes = [64,64], activation_type="tanh"):
         super().__init__(
@@ -76,8 +81,11 @@ class MLPMusicGen(MLPNetwork):
         seed = seed[:cutoff]
 
         # Ensure context is long enough
-        assert len(seed) >= self.context_length, \
-            "Not enough notes for your chosen context length."
+        if len(seed) <= self.context_length:
+            raise SeedError("Seed length is insufficient. Please provide a longer seed or use a larger song_part value.")
+        
+        if len(seed) > max_len:
+            raise Warning("Seed length exceeds max_len, model will return original seed/song only.")
                 
 
         generated = seed #tracking the number of notes
@@ -125,3 +133,5 @@ class MLPMusicGen(MLPNetwork):
             if msg.type == 'note_on':
                 notes.append(msg.note)
         return notes
+    
+    
