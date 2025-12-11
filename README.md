@@ -10,9 +10,9 @@
 - We implemented github workflow to allow continuous integration. The link to the workflow is provided below.
 https://github.com/AequaIis/composerml/tree/main/.github/workflows
 
-- To instal and run the package you can run the below code
-https://pypi.org/project/composerml/0.1.0/#description
-pip install composerml==0.1.0
+- provided is the website to out package and to instal and run the package you can run the below code
+    - https://pypi.org/project/composerml/0.1.0/#description
+    - pip install composerml==0.1.0
 
 ## Overview
 
