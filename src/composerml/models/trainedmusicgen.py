@@ -20,8 +20,14 @@ class TrainedMusicGen(MLPMusicGen):
     def load_model(self, model_path ):
         curr_param = self.parameters()
 
-        with open(model_path, "r") as f:
-            pre_trained_params = [float(line.strip()) for line in f]
+        try:
+            with open(model_path, "r") as f:
+                pre_trained_params = [float(line.strip()) for line in f]
+        except FileNotFoundError:
+            print(f"Model file not found at {model_path}")
+            sys.exit(1)
+
+
         try: 
             for i, p in enumerate(curr_param):
                 p.data = pre_trained_params[i]
