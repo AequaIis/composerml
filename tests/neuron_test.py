@@ -3,13 +3,11 @@ import os
 import sys
 from math import tanh
 
-root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-
-sys.path.insert(0, root_dir)
 
 
-from Models.Neuron import Neuron
-from Models.Value import Value
+
+from composerml.models.neuron import Neuron
+from composerml.models import Value
 
 class TestLayer(unittest.TestCase):
     

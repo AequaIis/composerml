@@ -1,7 +1,7 @@
 import numpy as np
-from .trainer import Trainer
-from Models.MLPMusicGen import MLPMusicGen
-from .losses import *
+from composerml.training.trainer import Trainer
+from composerml.models import MLPMusicGen
+from composerml.training.losses import *
 
 
 class MusicTrainer(Trainer):

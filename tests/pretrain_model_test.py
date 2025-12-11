@@ -1,9 +1,9 @@
 import os
 import sys
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from Models.TrainedMusicGen import TrainedMusicGen
+
+from composerml.models import TrainedMusicGen
 
 def test_trained_model_initialization():
     model = TrainedMusicGen()

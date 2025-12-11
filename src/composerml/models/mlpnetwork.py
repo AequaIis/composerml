@@ -1,5 +1,5 @@
-from .Value import Value
-from .Layer import Layer
+from .value import Value
+from .layer import Layer
 
 class MLPNetwork:
     def __init__(self, input_dim, n_neurons, label="", activation_type="tanh", classification="none"):

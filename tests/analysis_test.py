@@ -5,12 +5,8 @@ import pandas as pd
 
 import os
 
-root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 
-sys.path.insert(0, root_dir)
-
-sys.path.insert(0, str(Path(__file__).parent.parent))
-from Music_Generation.Analysis import MusicAnalysis
+from composerml.music_generation.analysis import MusicAnalysis
 
 class TestMusicAnalysis(unittest.TestCase):
     def setUp(self):
@@ -171,3 +167,6 @@ class TestMusicAnalysis(unittest.TestCase):
         self.assertIn('note', MusicAnalysis.char_notes.columns)
         self.assertIn('int', MusicAnalysis.char_notes.columns)
         self.assertGreater(len(MusicAnalysis.char_notes), 0)
+
+if __name__ == "__main__":
+    unittest.main()

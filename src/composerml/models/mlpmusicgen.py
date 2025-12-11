@@ -1,4 +1,4 @@
-from .MLPnetwork import MLPNetwork
+from .mlpnetwork import MLPNetwork
 import numpy as np
 from mido import MidiFile, MidiTrack, Message
 class MLPMusicGen(MLPNetwork):
