@@ -135,6 +135,3 @@ class MLPMusicGen(MLPNetwork):
         return notes
     
     
-class SeedError(Exception):
-    """Custom exception to indicate that the seed length is insufficient."""
-    pass
