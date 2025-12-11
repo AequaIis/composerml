@@ -4,7 +4,7 @@ import sys
 from unittest.mock import MagicMock, patch
 
 
-from composerml.music_generation.play_song import PlaySong
+from composerml.music_generation import PlaySong
 
 
 class TestPlaySong(unittest.TestCase):

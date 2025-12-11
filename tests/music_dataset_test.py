@@ -5,8 +5,7 @@ import sys
 import os
 
 
-
-from composerml.music_generation.music_dataset import MusicDataset
+from composerml.music_generation import MusicDataset
 
 class TestMusicDataset(unittest.TestCase):
 
