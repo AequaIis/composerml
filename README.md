@@ -1,5 +1,17 @@
 # composerml
 
+## Grading Critera
+- You can find the error and exceptions in the following files;
+    - User defined: Analysis.py and mlpmusicGen.py
+    - trainedmusicgen.py, midi_to_dataset.py, music_dataset.py, play_song.py
+ 
+- You can see the coverage report for our test suite listed in the repository in the coverage_percent.png file
+ 
+- We implemented github workflow to allow continuous integration. The link to the workflow is provided below.
+https://github.com/AequaIis/composerml/tree/main/.github/workflows
+
+- To instal and run the package you can run the below code
+
 ## Overview
 
 Datamint is a lightweight Python library for music generation built on a fully custom neural-network engine, inspired by the micrograd repo by Andrej Karpathy  
@@ -45,14 +57,7 @@ This package provides the complete pipeline for preparing MIDI data, building da
 
 - Analysis.py - analyzes the distribution of the notes output by our network (in the music generation branch)
 
-## Additional Files
 
-Example.ipynb provides an example on how to use this package and the oputput file untrained_Test.mid is the output midifile of our network after training.
-
-You can see the coverage report for our test suite listed in the repository in the coverage_percent.png file 
-
-We implemented github workflow to allow continuous integration. The link to the workflow is provided below.
-https://github.com/AequaIis/composerml/tree/main/.github/workflows
-
-To instal and run the package you can run the below code
+### Example.ipynb 
+provides an example on how to use this package and the oputput file untrained_Test.mid is the output midifile of our network after training.
 
