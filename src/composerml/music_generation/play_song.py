@@ -19,15 +19,23 @@ class PlaySong:
             `notes` - list of notes to be converted into midi file
             `name_of_file` - name of the output midi file
         """ 
+        try:
 
 
-        new_mid = MidiFile()
-        new_track = MidiTrack()
-        new_mid.tracks.append(new_track)
+            new_mid = MidiFile()
+            new_track = MidiTrack()
+            new_mid.tracks.append(new_track)
 
-        for note in notes:
-            new_track.append(Message('note_on', note=note, velocity=64, time=128))
-        new_mid.save(name_of_file)
+            for note in notes:
+                try:
+                    new_track.append(Message('note_on', note=note, velocity=64, time=128))
+                except Exception as e:
+                        print(f"[WARNING] Failed to add note {note}: {e}")
+            new_mid.save(name_of_file)
+        
+        except Exception as e:
+            print(f"[ERROR] Failed to generate MIDI: {e}")
+            
 
 
 
@@ -38,12 +46,15 @@ class PlaySong:
         Parameters:
             `name_of_file` - file path to the midi file to be played
         """
-        pygame.mixer.init()
-        pygame.mixer.music.load(name_of_file)
-        pygame.mixer.music.play()
-        while pygame.mixer.music.get_busy():
-            pygame.time.Clock().tick(10)
-         
+        try:
+            pygame.mixer.init()
+            pygame.mixer.music.load(name_of_file)
+            pygame.mixer.music.play()
+            while pygame.mixer.music.get_busy():
+                pygame.time.Clock().tick(10)
+        except Exception as e:
+            print(f"[ERROR] Failed to play MIDI: {e}")
+            
          
           
     
