@@ -18,6 +18,7 @@ https://github.com/AequaIis/composerml/tree/main/.github/workflows
   ``` python
   pip install composerml
   ```
+- Here is a video detailing how to use our package: https://youtu.be/49fZTGL776w
 
 ## Overview
 
