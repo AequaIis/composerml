@@ -17,8 +17,9 @@ It contains modular MLP components, training utilities, and a complete pipeline 
 
 - MLPMusicGen.py - Inherits MLPnetwork.py. Creates an MLP specific to music generation. Has an additional function call generate_piece that ask the user for a seed/context of music and generate a piece of music of fix length
   
-### Sub-Package 2 - Trainer
+### Sub-Package 2 - Training
 
+- musictrainer.py - this will train our model on music data
 - evaluator.py - this module contains helper function to evaluate the model
 - Trainer.py - will fit the model using training data, uses helper functions/classes contained in the following sub-folders.
     - Folder 1: Losses Module
@@ -29,13 +30,13 @@ It contains modular MLP components, training utilities, and a complete pipeline 
     - Folder 2: Optimizer Module
         - optimizer.py - parent class
         - SGD.py - stochastic gradient descent
+        - musictrainer.py - uses trainer to train the music daya
 
 ### Sub-Package 3 - Music Generation
 
 This package provides the complete pipeline for preparing MIDI data, building datasets, and generating or playing music.
 
 - midi_to_dataset.py - Utilities for loading MIDI files and extracting note sequences.  
-
 
 - music_dataset.py  - Main class that allow the user to input a folder containing midi files and generate a dataset including (features: context-notes) and targets (next note)
 
@@ -44,5 +45,14 @@ This package provides the complete pipeline for preparing MIDI data, building da
 
 - Analysis.py - analyzes the distribution of the notes output by our network (in the music generation branch)
 
+## Additional Files
 
 Example.ipynb provides an example on how to use this package and the oputput file untrained_Test.mid is the output midifile of our network after training.
+
+You can see the coverage report for our test suite listed in the repository in the coverage_percent.png file 
+
+We implemented github workflow to allow continuous integration. The link to the workflow is provided below.
+https://github.com/AequaIis/composerml/tree/main/.github/workflows
+
+To instal and run the package you can run the below code
+
