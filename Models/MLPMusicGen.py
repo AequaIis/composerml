@@ -103,7 +103,7 @@ class MLPMusicGen(MLPNetwork):
     def predict(self, x):
         """
         Override predict so that:
-        - x can be a nested list (list of lists, etc.)
+        - x can be a nested list (list of lists, etc.), since each notes is one-hot encoded
         - flatten it automatically before calling parent.predict()
         """
         # Convert to numpy array so we can flatten cleanly
