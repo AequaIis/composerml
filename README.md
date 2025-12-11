@@ -8,7 +8,7 @@
     - music_dataset.py (https://github.com/AequaIis/composerml/blob/main/src/composerml/music_generation/music_dataset.py)
     - play_song.py (https://github.com/AequaIis/composerml/blob/main/src/composerml/music_generation/play_song.py)
  
-- You can see the coverage report for our test suite listed in the repository in the coverage_percent.png file
+- You can see the coverage report for our test suite listed in the repository in the coverage_percent.png file (https://github.com/AequaIis/composerml/blob/main/coverage_percent.png)
  
 - We implemented github workflow to allow continuous integration. The link to the workflow is provided below.
 https://github.com/AequaIis/composerml/tree/main/.github/workflows
