@@ -15,10 +15,13 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install dependencies
+      - name: Install package + dependencies
         run: |
+          pip install -e .
           pip install -r requirements.txt
           pip install pytest
 
       - name: Run tests
-        run: pytest -vv
+        run: |
+          export PYTHONPATH=$PYTHONPATH:./src
+          pytest -vv
