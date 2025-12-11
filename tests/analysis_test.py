@@ -7,7 +7,7 @@ import pandas as pd
 import os
 
 
-from composerml.music_generation.analysis import MusicAnalysis
+from composerml.music_generation import MusicAnalysis
 
 class TestMusicAnalysis(unittest.TestCase):
     def setUp(self):

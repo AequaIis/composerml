@@ -2,7 +2,8 @@ import unittest
 import os
 from unittest.mock import patch, MagicMock
 
-from composerml.music_generation.midi_to_dataset import MidiDatasetLoader
+
+from composerml.music_generation import MidiDatasetLoader
 
 
 class TestMidiToDataset(unittest.TestCase):
