@@ -39,19 +39,27 @@ class MusicDataset(MidiDatasetLoader):
         X, Y = [], []
 
         for song in songs:   # song is a list[int]
-            if len(song) <= context_length:
+            try:
+                # Validate song type
+                idx = songs.index(song)
+                if not isinstance(song, list):
+                    raise ValueError(f"Song {idx} is not a list: {song}")
+                if len(song) <= context_length:
+                    continue
+
+                # sliding windows inside this single song
+                for i in range(len(song) - context_length):
+                    seq       = song[i:i+context_length]     # a list[int]
+                    next_note = song[i+context_length]       # an int
+                    X.append(seq)
+                    Y.append(next_note)
+
+                # End-of-song token
+                X.append(song[-context_length:])
+                Y.append(0)
+            except Exception as e:
+                print(f"[ERROR] Failed processing song index {idx}: {e}")
                 continue
-
-            # sliding windows inside this single song
-            for i in range(len(song) - context_length):
-                seq       = song[i:i+context_length]     # a list[int]
-                next_note = song[i+context_length]       # an int
-                X.append(seq)
-                Y.append(next_note)
-
-            # End-of-song token
-            X.append(song[-context_length:])
-            Y.append(0)
 
         return X, Y
 
