@@ -55,7 +55,7 @@ This package provides the complete pipeline for preparing MIDI data, building da
 - music_dataset.py  - Main class that allow the user to input a folder containing midi files and generate a dataset including (features: context-notes) and targets (next note)
 
 
-- play_song.py  - Once the model generate notes, the user then can initialize this class with the notes, and music will play.
+- play_song.py  - Once the model generate notes, the user then can initialize this class with the notes. The user can call generate_midi an input the notes and a file location as parameters and the music file will save
 
 - Analysis.py - analyzes the distribution of the notes output by our network (in the music generation branch)
 
