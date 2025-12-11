@@ -2,3 +2,5 @@ __pycache__/
 *.pyc
 soundfont.sf2
 .coverage
+.DS_Store
+.vscode/
