@@ -15,7 +15,7 @@ class TestMidiToDataset(unittest.TestCase):
     def setUpClass(cls):
         base_dir = os.path.dirname(__file__) 
         project_root = os.path.dirname(base_dir)
-        cls.example_folder = os.path.join(project_root, "Music_Generation","music_gen_test")
+        cls.example_folder = os.path.join(project_root, "Music_Generation","example_music")
 
         # make sure the file exsists
         if not os.path.isdir(cls.example_folder):
