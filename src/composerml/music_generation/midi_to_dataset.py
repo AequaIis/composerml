@@ -21,7 +21,7 @@ class MidiDatasetLoader:
         files=[]
         for name in os.listdir(self.folder_path):
             if name.lower().endswith((".mid", ".midi")):
-                files.append(os.path.join(self.folder_path, name))
+                files.append(os.path.join(self.folder_path, name))  
         return files
     
     def _extract_notes(self,midi_path):

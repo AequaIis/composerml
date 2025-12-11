@@ -1,6 +1,6 @@
-from Models import MLPNetwork
-from .losses import *
-from .optimizer import *
+from composerml.models import MLPNetwork
+from composerml.training.losses import *
+from composerml.training.optimizer import *
 import random
 
 

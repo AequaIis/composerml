@@ -3,15 +3,13 @@ from unittest.mock import MagicMock
 import os
 import sys
 
-root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-
-sys.path.insert(0, root_dir)
 
 
-from Trainer.trainer import Trainer
-from Trainer.optimizer import SGD
-from Trainer.losses import *
-from Models import MLPNetwork
+
+from composerml.training.trainer import Trainer
+from composerml.training.optimizer import SGD
+from composerml.training.losses import *
+from composerml.models import MLPNetwork
 
 class TestTrainer(unittest.TestCase):
 
@@ -53,8 +51,7 @@ class TestTrainer(unittest.TestCase):
         self.trainer = Trainer(
             model=self.model,
             optimizer=self.optimizer,
-            loss_fn=self.loss_fn,
-            epochs=3,
+            loss_fn=self.loss_fn
         )
         
     def tearDown(self):
@@ -68,17 +65,18 @@ class TestTrainer(unittest.TestCase):
         self.assertIs(self.trainer.loss_fn, self.loss_fn)
 
     def test_trainer_default_optimizer_and_loss_types(self):
-        trainer = Trainer(model=self.model, optimizer=None, loss_fn=None, epochs=1)
+        trainer = Trainer(model=self.model, optimizer=None, loss_fn=None)
         self.assertIsInstance(trainer.optimizer, SGD)
         self.assertIsInstance(trainer.loss_fn, LinearLoss)
         
     def test_fit_calls_zero_grad_and_step_correct_number_of_batches(self):
         batch_size = 2
-        self.trainer.fit(self.X, self.y, batch_size=batch_size)
+        epochs = 3
+        self.trainer.fit(self.X, self.y, batch_size=batch_size, epochs= epochs)
 
         n_samples = len(self.X)
         expected_batches_per_epoch = (n_samples + batch_size - 1) // batch_size
-        expected_step_calls = expected_batches_per_epoch * self.trainer.epochs
+        expected_step_calls = expected_batches_per_epoch * epochs
 
         # optimizer.step must be called once per batch
         self.assertEqual(self.optimizer.step.call_count, expected_step_calls)
@@ -88,10 +86,11 @@ class TestTrainer(unittest.TestCase):
 
     def test_fit_calls_predict_for_each_sample_each_epoch(self):
         batch_size = 2
-        self.trainer.fit(self.X, self.y, batch_size=batch_size)
+        epochs = 3
+        self.trainer.fit(self.X, self.y, batch_size=batch_size, epochs= epochs)
 
         n_samples = len(self.X)
-        expected_predict_calls = n_samples * self.trainer.epochs
+        expected_predict_calls = n_samples * epochs
 
         # predict is called once per sample per epoch
         self.assertEqual(self.model.predict.call_count, expected_predict_calls)

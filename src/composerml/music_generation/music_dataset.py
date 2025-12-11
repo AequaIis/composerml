@@ -1,5 +1,5 @@
 import random
-from .midi_to_dataset import MidiDatasetLoader
+from composerml.music_generation.midi_to_dataset import MidiDatasetLoader
 import numpy as np
 
 class MusicDataset(MidiDatasetLoader):

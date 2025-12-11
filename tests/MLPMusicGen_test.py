@@ -6,12 +6,9 @@ import numpy as np
 from numpy import exp
 
 
-root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 
-sys.path.insert(0, root_dir)
-
-from Models.MLPMusicGen import MLPMusicGen
-from Models.Value import Value
+from composerml.models import MLPMusicGen
+from composerml.models import Value
 
 
 class TestMLPMusicGen(unittest.TestCase):
@@ -32,4 +29,7 @@ class TestMLPMusicGen(unittest.TestCase):
             [0, 0, 1]
         ])
         np.testing.assert_array_equal(onehot, expected)
+        
+if __name__ == "__main__":
+    unittest.main()
     

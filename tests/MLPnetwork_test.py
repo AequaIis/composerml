@@ -6,12 +6,9 @@ import sys
 from numpy import exp
 
 
-root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 
-sys.path.insert(0, root_dir)
-
-from Models.MLPnetwork import MLPNetwork
-from Models.Value import Value
+from composerml.models import MLPNetwork
+from composerml.models import Value
 
 
 class TestMLPNetwork(unittest.TestCase):

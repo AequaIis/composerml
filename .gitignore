@@ -4,3 +4,4 @@ soundfont.sf2
 .coverage
 .DS_Store
 .vscode/
+.egg-info/

@@ -4,13 +4,9 @@ from pathlib import Path
 import sys
 import os
 
-root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 
-sys.path.insert(0, root_dir)
 
-sys.path.insert(0, str(Path(__file__).parent.parent))
-
-from Music_Generation.music_dataset import MusicDataset
+from composerml.music_generation.music_dataset import MusicDataset
 
 class TestMusicDataset(unittest.TestCase):
 
@@ -40,3 +36,7 @@ class TestMusicDataset(unittest.TestCase):
         self.assertTrue(np.array_equal(oh[0][1], np.eye(128)[1]))
         self.assertTrue(np.array_equal(oh[0][2], np.eye(128)[5]))
         self.assertTrue(np.array_equal(oh[1][0], np.eye(128)[10]))
+    
+
+if __name__ == "__main__":
+    unittest.main()

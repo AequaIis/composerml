@@ -4,11 +4,7 @@ import sys
 from unittest.mock import MagicMock, patch
 
 
-root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-
-sys.path.insert(0, root_dir)
-
-from Music_Generation.play_song import PlaySong
+from composerml.music_generation.play_song import PlaySong
 
 
 class TestPlaySong(unittest.TestCase):
@@ -25,17 +21,17 @@ class TestPlaySong(unittest.TestCase):
     def setUp(self):
         """Run before each test: patch heavy side-effect dependencies. Patches are there so we are not using the real dependancies"""
 
-        self.midifile_patcher = patch("Music_Generation.play_song.MidiFile")
-        self.midi_track_patcher = patch("Music_Generation.play_song.MidiTrack")
-        self.message_patcher = patch("Music_Generation.play_song.Message")
+        self.midifile_patcher = patch("composerml.music_generation.play_song.MidiFile")
+        self.midi_track_patcher = patch("composerml.music_generation.play_song.MidiTrack")
+        self.message_patcher = patch("composerml.music_generation.play_song.Message")
 
         self.mock_MidiFile = self.midifile_patcher.start()
         self.mock_MidiTrack = self.midi_track_patcher.start()
         self.mock_Message = self.message_patcher.start()
 
         # Patch pygame.mixer and pygame.time.Clock
-        self.mixer_patcher = patch("Music_Generation.play_song.pygame.mixer")
-        self.clock_patcher = patch("Music_Generation.play_song.pygame.time.Clock")
+        self.mixer_patcher = patch("composerml.music_generation.play_song.pygame.mixer")
+        self.clock_patcher = patch("composerml.music_generation.play_song.pygame.time.Clock")
 
         self.mock_mixer = self.mixer_patcher.start()
         self.mock_clock = self.clock_patcher.start()
@@ -48,18 +44,9 @@ class TestPlaySong(unittest.TestCase):
         self.mixer_patcher.stop()
         self.clock_patcher.stop()
         
-    def test_init_calls_generate_and_play(self):
-        # Patch the instance methods to avoid running real implementations
-        with patch.object(PlaySong, "generate_midi") as mock_gen, \
-             patch.object(PlaySong, "play_midi") as mock_play:
-
-            song = PlaySong(self.notes, self.filename)
-
-            mock_gen.assert_called_once_with(self.notes, self.filename)
-            mock_play.assert_called_once_with(self.filename)
-            
-            self.assertEqual(song.notes, self.notes)
-            self.assertEqual(song.name_of_file, self.filename)
+    def test_init(self):
+        song = PlaySong()
+        self.assertIsInstance(song, PlaySong)
             
     def test_generate_midi_creates_track_and_messages(self):
         
@@ -101,5 +88,12 @@ class TestPlaySong(unittest.TestCase):
         self.assertGreaterEqual(self.mock_mixer.music.get_busy.call_count, 1)
 
         clock_instance.tick.assert_called_with(10)
+    
+    def generate_play_midi_test(self):
+        """Integration test: generate a midi file and play it (with patched pygame)"""
+        song = PlaySong()
+        song.generate_midi(self.notes, self.filename)
+        song.play_midi(self.filename)
+
 if __name__ == "__main__":
     unittest.main()
