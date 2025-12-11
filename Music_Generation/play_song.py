@@ -1,7 +1,7 @@
 import numpy as np
 from mido import MidiFile, MidiTrack, Message
 import pygame
-import pygame
+
 
 
 class PlaySong:
