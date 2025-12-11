@@ -11,6 +11,8 @@
 https://github.com/AequaIis/composerml/tree/main/.github/workflows
 
 - To instal and run the package you can run the below code
+https://pypi.org/project/composerml/0.1.0/#description
+pip install composerml==0.1.0
 
 ## Overview
 
