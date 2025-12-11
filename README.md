@@ -2,8 +2,11 @@
 
 ## Grading Critera
 - You can find the error and exceptions in the following files;
-    - User defined: Analysis.py and mlpmusicGen.py
-    - trainedmusicgen.py, midi_to_dataset.py, music_dataset.py, play_song.py
+    - User defined: Analysis.py (https://github.com/AequaIis/composerml/blob/main/src/composerml/music_generation/analysis.py) and mlpmusicgen.py (https://github.com/AequaIis/composerml/blob/main/src/composerml/models/mlpmusicgen.py)
+    - trainedmusicgen.py (https://github.com/AequaIis/composerml/blob/main/src/composerml/models/trainedmusicgen.py)
+    - midi_to_dataset.py (https://github.com/AequaIis/composerml/blob/main/src/composerml/music_generation/midi_to_dataset.py)
+    - music_dataset.py (https://github.com/AequaIis/composerml/blob/main/src/composerml/music_generation/music_dataset.py)
+    - play_song.py (https://github.com/AequaIis/composerml/blob/main/src/composerml/music_generation/play_song.py)
  
 - You can see the coverage report for our test suite listed in the repository in the coverage_percent.png file
  
@@ -12,7 +15,9 @@ https://github.com/AequaIis/composerml/tree/main/.github/workflows
 
 - provided is the website to out package and to instal and run the package you can run the below code
     - https://pypi.org/project/composerml/0.1.0/#description
-    - pip install composerml==0.1.0
+  ``` python
+  pip install composerml
+  ```
 
 ## Overview
 
